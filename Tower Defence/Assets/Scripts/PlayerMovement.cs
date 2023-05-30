@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Player Stats")]
-    [SerializeField] private int playerSpeed;
+    public int playerSpeed;
 
     private float x, y;
 
