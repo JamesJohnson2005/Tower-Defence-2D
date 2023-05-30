@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class HighScore : MonoBehaviour
 {
-    float timer;
+    [SerializeField] private float timer;
     private bool run;
     // Start is called before the first frame update
     void Start()
     {
-       
+        run = true;
+        timer = 0;
     }
 
     // Update is called once per frame
