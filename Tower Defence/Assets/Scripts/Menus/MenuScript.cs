@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PauseMenu : MonoBehaviour
+public class MenuScript : MonoBehaviour
 {
     public GameObject pauseMenuObject;
     public bool paused;
@@ -17,6 +17,7 @@ public class PauseMenu : MonoBehaviour
         }
        
     }
+    #region Pause
     public void Resume()
     {
         Time.timeScale = 1;
@@ -33,4 +34,15 @@ public class PauseMenu : MonoBehaviour
         Resume();
         SceneManager.LoadScene("MainMenu");
     }
+    #endregion
+    #region Menu
+    public void Settings()
+    {
+
+    }
+
+
+
+
+    #endregion
 }
