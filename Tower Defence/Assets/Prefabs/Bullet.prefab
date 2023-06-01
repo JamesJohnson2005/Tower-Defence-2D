@@ -114,6 +114,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 3
   bulletDamage: 0
+  target: {fileID: 0}
+  autoAimDis: 3
 --- !u!50 &3183512889823922398
 Rigidbody2D:
   serializedVersion: 4

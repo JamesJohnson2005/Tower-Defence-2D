@@ -7,6 +7,9 @@ public class BulletManager : MonoBehaviour
     private Rigidbody2D rb;
     public float bulletSpeed;
     public int bulletDamage;
+    public GameObject target;
+    private float disFromEnemy;
+    [SerializeField] private float autoAimDis = 7;
     // Start is called before the first frame update
     void Awake()
     {
@@ -16,7 +19,18 @@ public class BulletManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        rb.AddForce(bulletSpeed * gameObject.transform.up, ForceMode2D.Impulse);
+        if (disFromEnemy > autoAimDis)
+        {
+            rb.AddForce(bulletSpeed * gameObject.transform.up, ForceMode2D.Impulse);
+        } else
+        {
+            gameObject.transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Time.deltaTime * bulletSpeed * 3);
+        }
+    }
+
+    private void Update()
+    {
+        disFromEnemy = Vector2.Distance(transform.position, target.transform.position);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -27,8 +41,9 @@ public class BulletManager : MonoBehaviour
            // enemyScript.ChangeHealth(-bulletDamage);
         }
     }
-    private void SetDamage(int towerDamage)
+    public void SetValues(int towerDamage, GameObject _target)
     {
         bulletDamage = towerDamage;
+        target = _target;
     }
 }
