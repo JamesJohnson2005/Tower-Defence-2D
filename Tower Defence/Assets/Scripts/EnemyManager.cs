@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("Enemy Stats")]
+    public int enemyHealth;
+    public float enemySpeed;
+    private EnemyPath pathScript;
+    private int currentTarget;
+
+    private void Awake()
     {
-        
+        pathScript = GameObject.Find("EnemyPath").GetComponent<EnemyPath>();
+        currentTarget = 1;
+        transform.position = pathScript.points[0].transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (currentTarget <= pathScript.points.Length - 1)
+        {
+             gameObject.transform.position = Vector3.MoveTowards(transform.position, pathScript.points[currentTarget].transform.position, Time.deltaTime * enemySpeed);
+
+
+            if (Vector2.Distance(gameObject.transform.position, pathScript.points[currentTarget].transform.position) < 0.1f)
+            {
+                currentTarget++;
+            }
+        }
+
     }
+
+
 }

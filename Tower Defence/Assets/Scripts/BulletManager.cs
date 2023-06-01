@@ -16,7 +16,7 @@ public class BulletManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        rb.AddForce(bulletSpeed * gameObject.transform.up * Time.deltaTime, ForceMode2D.Impulse);
+        rb.AddForce(bulletSpeed * gameObject.transform.up, ForceMode2D.Impulse);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

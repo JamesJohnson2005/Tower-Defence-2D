@@ -32,8 +32,8 @@ public class Loader : MonoBehaviour
     void LoadXML()
     {
         xmlDoc = XDocument.Load("Assets/Resources/XML/HighScore");
-        // Highscore = xmlDoc.Descendants("HighScore").Elements();
-        foreach (var highscore in HighScore)
+        //Highscore = xmlDoc.Descendants("HighScore").Elements();
+        //foreach (var highscore in HighScore)
         {
 
         }

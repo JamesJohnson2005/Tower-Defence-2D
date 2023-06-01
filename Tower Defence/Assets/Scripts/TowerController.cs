@@ -9,6 +9,7 @@ public class TowerController : MonoBehaviour
     public float fireSpeed;
     private float fireTimer;
     public float towerRange;
+    public GameObject bulletPrefab;
 
     [Header("Tower Attacks")]
     public GameObject currentTarget;
@@ -35,6 +36,10 @@ public class TowerController : MonoBehaviour
         // Set enemy list
         enemies = spawnerScript.currentEnemies;
 
+        // Decrease shoot timer
+        if (fireTimer >= 0) { fireTimer -= Time.deltaTime; }
+        
+
         // Set lowest distance to infinity
         float lowDis = Mathf.Infinity;
 
@@ -58,7 +63,24 @@ public class TowerController : MonoBehaviour
         // If theres a target
         if (currentTarget == true)
         {
+            // Turn and face the enemy
             transform.right = Vector3.Lerp(transform.right, currentTarget.transform.position - transform.position, Time.deltaTime * 10);
+
+            // Can the tower shoot?
+            if (fireTimer <= 0)
+            {
+                // Spawn a bullet object
+                GameObject spawnedBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+
+                // Make bullet face the same way as the tower
+                spawnedBullet.transform.right = -transform.up;
+
+                // Destroy the bullet after 5 seconds if it somehow manages to stay 'alive' that long
+                Destroy(spawnedBullet, 5);
+
+                // Reset timer
+                fireTimer = fireSpeed;
+            }
         }
     }
 }
