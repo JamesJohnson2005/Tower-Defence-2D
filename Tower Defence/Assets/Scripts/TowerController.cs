@@ -58,9 +58,7 @@ public class TowerController : MonoBehaviour
         // If theres a target
         if (currentTarget == true)
         {
-            transform.LookAt(currentTarget.transform.position);
-
-            //transform.localRotation = Quaternion.Euler(new Vector3(initialRotation.x, this.transform.localRotation.y, initialRotation.z));
+            transform.right = Vector3.Lerp(transform.right, currentTarget.transform.position - transform.position, Time.deltaTime * 10);
         }
     }
 }
