@@ -19,12 +19,14 @@ public class BulletManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (disFromEnemy > autoAimDis)
+        rb.AddForce(bulletSpeed * gameObject.transform.up, ForceMode2D.Impulse);
+
+        if (disFromEnemy < autoAimDis)
         {
-            rb.AddForce(bulletSpeed * gameObject.transform.up, ForceMode2D.Impulse);
+            transform.up = target.transform.position - transform.position;
         } else
         {
-            gameObject.transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Time.deltaTime * bulletSpeed * 3);
+            //gameObject.transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Time.deltaTime * bulletSpeed * 3);
         }
     }
 
