@@ -43,17 +43,16 @@ public class TowerController : MonoBehaviour
         // Set lowest distance to infinity
         float lowDis = Mathf.Infinity;
 
-        // Loop through each enemy and check the distance
-        foreach(GameObject enemy in enemies)
+        for (int i = 0; i < enemies.Count; i++)
         {
-            float newDis = Vector2.Distance(gameObject.transform.position, enemy.transform.position);
+            float newDis = Vector2.Distance(gameObject.transform.position, enemies[i].transform.position);
 
             // Is this distance lower than the last one?
             if (newDis <= towerRange && newDis < lowDis)
             {
                 // Set the distance and target
                 lowDis = newDis;
-                currentTarget = enemy;
+                currentTarget = enemies[i];
             }
         }
 

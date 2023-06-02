@@ -19,20 +19,27 @@ public class BulletManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        rb.AddForce(bulletSpeed * gameObject.transform.up, ForceMode2D.Impulse);
-
-        if (disFromEnemy < autoAimDis)
+        if (disFromEnemy > autoAimDis)
         {
-            transform.up = target.transform.position - transform.position;
+            rb.AddForce(bulletSpeed * gameObject.transform.up, ForceMode2D.Impulse);
         } else
         {
-            //gameObject.transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Time.deltaTime * bulletSpeed * 3);
+            if (target)
+            {
+                gameObject.transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Time.deltaTime * bulletSpeed * 3);
+            }
         }
     }
 
     private void Update()
     {
-        disFromEnemy = Vector2.Distance(transform.position, target.transform.position);
+        if (target != null)
+        {
+            disFromEnemy = Vector2.Distance(transform.position, target.transform.position);
+        } else
+        {
+            disFromEnemy = Mathf.Infinity;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -40,7 +47,8 @@ public class BulletManager : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             EnemyManager enemyScript = collision.gameObject.GetComponent<EnemyManager>();
-           // enemyScript.ChangeHealth(-bulletDamage);
+            enemyScript.ChangeHealth(-bulletDamage);
+            Destroy(gameObject);
         }
     }
     public void SetValues(int towerDamage, GameObject _target)
