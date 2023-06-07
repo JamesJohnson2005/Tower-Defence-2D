@@ -31,7 +31,9 @@ public class EnemySpawner : MonoBehaviour
             waveValue -= enemyCosts[chosenEnemy];
         }
 
-        spawnDelay = 1;
+        spawnDelay =  3 - (toSpawn.Count * 0.2f);
+
+        if (spawnDelay < 0.2f) { spawnDelay = 0.2f; } // Hard limit
     }
 
     private void Update()
