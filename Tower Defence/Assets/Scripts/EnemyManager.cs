@@ -9,12 +9,14 @@ public class EnemyManager : MonoBehaviour
     public float enemySpeed;
     private EnemyPath pathScript;
     private int currentTarget;
+    private EnemySpawner spawnerScript;
 
     private void Awake()
     {
         pathScript = GameObject.Find("EnemyPath").GetComponent<EnemyPath>();
         currentTarget = 1;
         transform.position = pathScript.points[0].transform.position;
+        spawnerScript = GameObject.Find("GameManager").GetComponent<EnemySpawner>();
     }
 
     private void Update()
@@ -30,6 +32,22 @@ public class EnemyManager : MonoBehaviour
             }
         }
 
+        // Check enemy health
+        if (enemyHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+
+    }
+
+    public void ChangeHealth(int healthChange)
+    {
+        enemyHealth += healthChange;
+    }
+
+    private void OnDestroy()
+    {
+        spawnerScript.currentEnemies.Remove(gameObject);
     }
 
 
