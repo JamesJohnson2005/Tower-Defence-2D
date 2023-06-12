@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Player Stats")]
     public int playerSpeed;
+    public GameObject purchaseText;
 
     private float x, y;
     private float xPos, yPos;
