@@ -2480,7 +2480,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 6
+  playerDamage: 5
+  fireSpeed: 1
   purchaseText: {fileID: 838755250}
+  bulletPrefab: {fileID: 3183512889823922385, guid: 8be660cb4bbfe404b889a959ed10f68c,
+    type: 3}
 --- !u!1 &568422236
 GameObject:
   m_ObjectHideFlags: 0

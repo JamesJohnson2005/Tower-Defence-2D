@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private BoxCollider2D collider;
+    public GameObject purchaseText;
     private float fireTimer;
     public GameObject bulletPrefab;
     Vector2 screenBounds;
@@ -38,13 +39,12 @@ public class PlayerMovement : MonoBehaviour
         {
             PlayerShoot();
         }
-    }   
-
         xPos = Mathf.Clamp(transform.position.x, -screenBounds.x + transform.localScale.x, screenBounds.x - transform.localScale.y);
         yPos = Mathf.Clamp(transform.position.y, -screenBounds.y + transform.localScale.x, screenBounds.y - transform.localScale.y);
+    }   
+
 
         
-    }
 
     private void FixedUpdate()
     {
