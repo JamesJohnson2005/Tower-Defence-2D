@@ -5,10 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameObject gameManager;
+    public GameObject selectedBase;
 
     private void Awake()
     {
        
+    }
+
+    public void BuyTower(int type)
+    {
+        if (selectedBase)
+            selectedBase.GetComponent<TowerBase>().PlaceTower(type);
     }
 }
