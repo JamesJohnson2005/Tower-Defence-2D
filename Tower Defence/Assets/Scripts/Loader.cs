@@ -9,33 +9,36 @@ using System.Xml.Linq;
 
 public class Loader : MonoBehaviour
 {
-    XDocument xmlDoc;
-    bool finishedLoading = false;
+    [SerializeField] private HighScoreData _HighScoreData = new HighScoreData();
+
+    public void SaveIntoJSON()
+    {
+        string id = JsonUtility.ToJson(_HighScoreData);
+        System.IO.File.WriteAllText(Application.persistentDataPath + "/HighScore.json", id);
+
+    }
 
     // Start is called before the first frame update
+    [System.Serializable]
+
+    public class HighScoreData
+    {
+        public int levelID;
+        public float time;
+    }
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
-        StartCoroutine("Assign Data");
-        
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (finishedLoading)
-        {
-            Application.LoadLevel("TestScene");
-
-        }
+     
     }
     void LoadXML()
     {
-        xmlDoc = XDocument.Load("Assets/Resources/XML/HighScore");
-        //Highscore = xmlDoc.Descendants("HighScore").Elements();
-        //foreach (var highscore in HighScore)
-        {
 
-        }
     }
 }
