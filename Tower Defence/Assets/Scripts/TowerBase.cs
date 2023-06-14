@@ -18,25 +18,34 @@ public class TowerBase : MonoBehaviour
     public bool hasTower;
     public GameObject baseTower, goldTower, redTower;
     private GameManager gameManager;
+    private GameObject player;
 
-    private void Awake()
+    private void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        buyMenu.SetActive(false);
+    }
+    private void Awake()
+    {
+        buyMenu = GameObject.Find("BuyMenu");
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && !hasTower)
         {
+            if (!player) { player = collision.gameObject; }
             collision.gameObject.GetComponent<PlayerMovement>().purchaseText.SetActive(true);
             canBuy = true;
             gameManager.selectedBase = gameObject;
         }
+        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && !hasTower)
+        if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<PlayerMovement>().purchaseText.SetActive(false);
             canBuy = false;
