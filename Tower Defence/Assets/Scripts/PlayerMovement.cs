@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public int playerSpeed;
     public int playerDamage;
     public float fireSpeed;
+    public GameObject purchaseText;
 
     private float x, y;
     private float xPos, yPos;
@@ -38,13 +39,12 @@ public class PlayerMovement : MonoBehaviour
         {
             PlayerShoot();
         }
-    }   
-
         xPos = Mathf.Clamp(transform.position.x, -screenBounds.x + transform.localScale.x, screenBounds.x - transform.localScale.y);
         yPos = Mathf.Clamp(transform.position.y, -screenBounds.y + transform.localScale.x, screenBounds.y - transform.localScale.y);
+    }   
+
 
         
-    }
 
     private void FixedUpdate()
     {
