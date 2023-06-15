@@ -17,17 +17,27 @@ public class TowerBase : MonoBehaviour
     public TowerType currentType;
     public bool hasTower;
     public GameObject baseTower, goldTower, redTower;
+    private GameObject player;
     private GameManager gameManager;
+
+    private void Start()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        buyMenu.SetActive(false);
+        
+    }
 
     private void Awake()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        buyMenu = GameObject.Find("BuyMenu");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && !hasTower)
         {
+            if (!player) { player = collision.gameObject; }
+
             collision.gameObject.GetComponent<PlayerMovement>().purchaseText.SetActive(true);
             canBuy = true;
             gameManager.selectedBase = gameObject;
@@ -36,7 +46,7 @@ public class TowerBase : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && !hasTower)
+        if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<PlayerMovement>().purchaseText.SetActive(false);
             canBuy = false;
@@ -66,6 +76,7 @@ public class TowerBase : MonoBehaviour
         canBuy = false;
         menuUp = false;
         buyMenu.SetActive(false);
+        player.GetComponent<PlayerMovement>().purchaseText.SetActive(false);
         switch (type)
         {
             case 1:
@@ -79,7 +90,7 @@ public class TowerBase : MonoBehaviour
                 break;
         }
         gameManager.selectedBase = null;
-
+        
     }
 
     private void SetTower(GameObject newType)

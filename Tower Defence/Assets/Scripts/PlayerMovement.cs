@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private BoxCollider2D collider;
-    public GameObject purchaseText;
     private float fireTimer;
     public GameObject bulletPrefab;
     Vector2 screenBounds;
@@ -31,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         fireTimer -= Time.deltaTime;
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         // Get User Input
         x = Input.GetAxisRaw("Horizontal");
