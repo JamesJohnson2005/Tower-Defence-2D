@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         fireTimer -= Time.deltaTime;
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         // Get User Input
         x = Input.GetAxisRaw("Horizontal");
