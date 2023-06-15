@@ -10,6 +10,7 @@ public class EnemyManager : MonoBehaviour
     private EnemyPath pathScript;
     private int currentTarget;
     private EnemySpawner spawnerScript;
+    [SerializeField] private int deathValue;
 
     private void Awake()
     {
@@ -35,7 +36,9 @@ public class EnemyManager : MonoBehaviour
         // Check enemy health
         if (enemyHealth <= 0)
         {
+            
             Destroy(gameObject);
+            
         }
 
     }
@@ -47,6 +50,7 @@ public class EnemyManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        GameManager.currency += deathValue;
         spawnerScript.currentEnemies.Remove(gameObject);
     }
 
