@@ -57,9 +57,7 @@ public class TowerBase : MonoBehaviour
 
     public void Update()
     {
-        
-
-        if (canBuy)
+        if (canBuy) // Is player close enough to tower?
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -71,6 +69,10 @@ public class TowerBase : MonoBehaviour
 
     public void PlaceTower(int type)
     {
+        // TO:DO
+        // Does player have enough to buy the tower
+        // Optional (can leave for James): gray out buttons for towers you cant buy
+
         hasTower = true;
         canBuy = false;
         menuUp = false;
@@ -88,6 +90,7 @@ public class TowerBase : MonoBehaviour
                 break;
         }
         gameManager.selectedBase = null;
+        // TO:DO Remove Coin value
 
     }
 
