@@ -14,6 +14,7 @@ public class EnemySpawner : MonoBehaviour
     private float spawnDelay;
     private float timer;
 
+
     private void Awake()
     {
         SpawnEnemies();
@@ -23,7 +24,9 @@ public class EnemySpawner : MonoBehaviour
     {
         // Get Wave Value
         waveValue = currentWave * 5;
-
+        int waveBonus;
+        waveBonus = currentWave * 250;
+        GameManager.currency += waveBonus;
         while (waveValue > 0)
         {
             int chosenEnemy = Random.Range(0, enemyTypes.Length);
