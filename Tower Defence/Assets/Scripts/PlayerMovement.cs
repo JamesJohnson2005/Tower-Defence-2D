@@ -31,6 +31,9 @@ public class PlayerMovement : MonoBehaviour
     {
         fireTimer -= Time.deltaTime;
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 worldPosFlattened = new Vector3(worldPosition.x, worldPosition.y, 0);
+
+        transform.right = Vector3.Lerp(transform.right, worldPosFlattened - transform.position, Time.deltaTime * 10);
 
         // Get User Input
         x = Input.GetAxisRaw("Horizontal");
@@ -42,6 +45,17 @@ public class PlayerMovement : MonoBehaviour
         }
         xPos = Mathf.Clamp(transform.position.x, -screenBounds.x + transform.localScale.x, screenBounds.x - transform.localScale.y);
         yPos = Mathf.Clamp(transform.position.y, -screenBounds.y + transform.localScale.x, screenBounds.y - transform.localScale.y);
+
+        // Keep player in bounds
+        if (Mathf.Abs(xPos) < Mathf.Abs(transform.position.x))
+        {
+            transform.position = new Vector2(xPos, transform.position.y);
+        }
+
+        if (Mathf.Abs(yPos) < Mathf.Abs(transform.position.y))
+        {
+            transform.position = new Vector2(transform.position.x, yPos);
+        }
     }   
 
 

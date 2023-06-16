@@ -14,6 +14,10 @@ public class EnemySpawner : MonoBehaviour
     private float spawnDelay;
     private float timer;
 
+    public float graceDelay;
+    private float graceTimer;
+    private bool awaitingWave;
+
     private void Awake()
     {
         SpawnEnemies();
@@ -21,6 +25,9 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemies()
     {
+        // Increase wave
+        currentWave++;
+
         // Get Wave Value
         waveValue = currentWave * 5;
 
@@ -41,6 +48,12 @@ public class EnemySpawner : MonoBehaviour
         timer -= Time.deltaTime;
         remainingEnemies = toSpawn.Count;
 
+        // Decrease graceTimer 
+        if (graceTimer >= 0)
+        {
+            graceTimer -= Time.deltaTime;
+        }
+
         if (timer <= 0 && toSpawn.Count > 0)
         {
             GameObject spawnedEnemy = Instantiate(toSpawn[0].gameObject, transform.position, Quaternion.identity);
@@ -51,8 +64,8 @@ public class EnemySpawner : MonoBehaviour
 
         if (remainingEnemies == 0)
         {
-            currentWave++;
-            SpawnEnemies();
+            // Use this variable to tell when to do grace period
+            awaitingWave = true;
         }
     }
 }
