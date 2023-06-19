@@ -11,6 +11,7 @@ public class EnemyManager : MonoBehaviour
     private int currentTarget;
     private EnemySpawner spawnerScript;
     [SerializeField] private int deathValue;
+    private GameManager gameManager;
 
     private void Awake()
     {
@@ -18,6 +19,7 @@ public class EnemyManager : MonoBehaviour
         currentTarget = 1;
         transform.position = pathScript.points[0].transform.position;
         spawnerScript = GameObject.Find("GameManager").GetComponent<EnemySpawner>();
+        gameManager = GetComponent<GameManager>();
     }
 
     private void Update()
@@ -31,19 +33,19 @@ public class EnemyManager : MonoBehaviour
             {
                 currentTarget++;
             }
-        } else
+            
+        }else
         {
-            // TO:DO, 
-            // Make player lose lives according to enemy damage (make a variable above, global and public)
-            // Destroy enemy, but make sure to not award player with coins, make sure it gets removed from current enemies list
-
-            // Checking for a game over doesnt happen here so dont worry about it at the moment
+            gameManager.lives--;
+            Destroy(gameObject);
+            
         }
 
         // Check enemy health
         if (enemyHealth <= 0)
         {
             
+            GameManager.currency += deathValue;
             Destroy(gameObject);
             
         }
@@ -57,8 +59,6 @@ public class EnemyManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        // TO:DO MOVE THIS TO A SEPERATE VOID
-        //GameManager.currency += deathValue;
         spawnerScript.currentEnemies.Remove(gameObject);
     }
 

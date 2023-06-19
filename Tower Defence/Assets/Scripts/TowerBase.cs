@@ -19,6 +19,8 @@ public class TowerBase : MonoBehaviour
     public GameObject baseTower, goldTower, redTower;
     private GameManager gameManager;
     private GameObject player;
+    public bool purchasable;
+    [SerializeField]private int baseCost, goldCost, redCost;
 
     private void Start()
     {
@@ -70,28 +72,37 @@ public class TowerBase : MonoBehaviour
     public void PlaceTower(int type)
     {
         // TO:DO
-        // Does player have enough to buy the tower
+        // Does player have enough to buy the tower done!
         // Optional (can leave for James): gray out buttons for towers you cant buy
-
-        hasTower = true;
-        canBuy = false;
+        
         menuUp = false;
-        buyMenu.SetActive(false);
+
+        
         switch (type)
         {
             case 1:
+                if(GameManager.currency < baseCost) { return; }
                 SetTower(baseTower);
+                GameManager.currency -= baseCost;
                 break;
             case 2:
+                if (GameManager.currency < goldCost) { return; }
                 SetTower(goldTower);
+                GameManager.currency -= goldCost;
                 break;
             case 3:
+                if (GameManager.currency < redCost) { return; }
                 SetTower(redTower);
+                GameManager.currency -= redCost;
                 break;
         }
         gameManager.selectedBase = null;
         // TO:DO Remove Coin value
-
+        
+        hasTower = true;
+        canBuy = false;
+        buyMenu.SetActive(false);
+        
     }
 
     private void SetTower(GameObject newType)

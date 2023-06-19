@@ -19,6 +19,7 @@ public class EnemySpawner : MonoBehaviour
     public float graceDelay; // Set this in inspector to wait # long
     private float graceTimer; // Dont config this in inspector
     private bool awaitingWave;
+    private bool gracePeriod;
 
     private void Awake()
     {
@@ -36,6 +37,10 @@ public class EnemySpawner : MonoBehaviour
         // Get Wave Value
         waveValue = currentWave * 5;
 
+        if (gracePeriod)
+        {
+
+        }
         while (waveValue > 0)
         {
             int chosenEnemy = Random.Range(0, enemyTypes.Length);
