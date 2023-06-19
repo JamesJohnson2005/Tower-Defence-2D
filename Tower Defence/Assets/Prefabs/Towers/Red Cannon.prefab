@@ -75,6 +75,7 @@ MonoBehaviour:
   bulletDamage: 100
   fireSpeed: 2
   towerRange: 15
+  towerCost: 5000
   bulletPrefab: {fileID: 3183512889823922385, guid: 8be660cb4bbfe404b889a959ed10f68c,
     type: 3}
   currentTarget: {fileID: 0}

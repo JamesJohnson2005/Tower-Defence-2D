@@ -11,6 +11,7 @@ public class EnemyManager : MonoBehaviour
     private int currentTarget;
     private EnemySpawner spawnerScript;
     [SerializeField] private int deathValue;
+    private GameManager gameManager;
 
     private void Awake()
     {
@@ -18,6 +19,7 @@ public class EnemyManager : MonoBehaviour
         currentTarget = 1;
         transform.position = pathScript.points[0].transform.position;
         spawnerScript = GameObject.Find("GameManager").GetComponent<EnemySpawner>();
+        gameManager = GetComponent<GameManager>();
     }
 
     private void Update()
@@ -31,12 +33,19 @@ public class EnemyManager : MonoBehaviour
             {
                 currentTarget++;
             }
+            
+        }else
+        {
+            gameManager.lives--;
+            Destroy(gameObject);
+            
         }
 
         // Check enemy health
         if (enemyHealth <= 0)
         {
             
+            GameManager.currency += deathValue;
             Destroy(gameObject);
             
         }
@@ -50,7 +59,6 @@ public class EnemyManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.currency += deathValue;
         spawnerScript.currentEnemies.Remove(gameObject);
     }
 

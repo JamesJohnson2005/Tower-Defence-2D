@@ -6,8 +6,9 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public GameObject selectedBase;
-    public static int currency;
+    public static int currency = 200;
     public TextMeshProUGUI currencyText;
+    public int lives;
     private void Awake()
     {
        
