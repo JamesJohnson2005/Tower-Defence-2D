@@ -32,6 +32,8 @@ public class EnemySpawner : MonoBehaviour
         // Increase wave
         currentWave++;
 
+        awaitingWave = false;
+
         // Get Wave Value
         waveValue = currentWave * 5;
 
@@ -67,6 +69,9 @@ public class EnemySpawner : MonoBehaviour
         if (graceTimer >= 0)
         {
             graceTimer -= Time.deltaTime;
+        } else if (graceTimer <= 0 && awaitingWave)
+        {
+            SpawnEnemies();
         }
 
         if (timer <= 0 && toSpawn.Count > 0)
@@ -77,14 +82,20 @@ public class EnemySpawner : MonoBehaviour
             timer = spawnDelay;
         }
 
-        if (remainingEnemies == 0)
+        if (currentEnemies.Count == 0 && remainingEnemies == 0 && awaitingWave == false)
         {
-            // Use this variable to tell when to do grace period
-            awaitingWave = true;
+            StartCooldown();
         }
 
         // TO:DO
         // when awaitingWave is true, set the grace timer to the grace wait time, do not update it every frame
         // or else it will always be stuck at the time
+    }
+
+    public void StartCooldown()
+    {
+        // Set timer to the correct amount
+        graceTimer = graceDelay;
+        awaitingWave = true;
     }
 }

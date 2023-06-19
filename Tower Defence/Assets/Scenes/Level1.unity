@@ -6149,7 +6149,7 @@ MonoBehaviour:
   remainingEnemies: 0
   currentWave: 1
   waveText: {fileID: 2047600711}
-  graceDelay: 0
+  graceDelay: 3
 --- !u!114 &1438900002
 MonoBehaviour:
   m_ObjectHideFlags: 0
