@@ -31,6 +31,13 @@ public class EnemyManager : MonoBehaviour
             {
                 currentTarget++;
             }
+        } else
+        {
+            // TO:DO, 
+            // Make player lose lives according to enemy damage (make a variable above, global and public)
+            // Destroy enemy, but make sure to not award player with coins, make sure it gets removed from current enemies list
+
+            // Checking for a game over doesnt happen here so dont worry about it at the moment
         }
 
         // Check enemy health
@@ -50,7 +57,8 @@ public class EnemyManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.currency += deathValue;
+        // TO:DO MOVE THIS TO A SEPERATE VOID
+        //GameManager.currency += deathValue;
         spawnerScript.currentEnemies.Remove(gameObject);
     }
 
