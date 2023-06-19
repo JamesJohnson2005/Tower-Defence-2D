@@ -36,11 +36,6 @@ public class EnemySpawner : MonoBehaviour
 
         // Get Wave Value
         waveValue = currentWave * 5;
-
-        if (gracePeriod)
-        {
-
-        }
         while (waveValue > 0)
         {
             
@@ -95,6 +90,7 @@ public class EnemySpawner : MonoBehaviour
     public void StartCooldown()
     {
         // Set timer to the correct amount
+        GameManager.currency += currentWave * 100;
         graceTimer = graceDelay;
         awaitingWave = true;
     }

@@ -76,6 +76,7 @@ public class TowerBase : MonoBehaviour
         // Optional (can leave for James): gray out buttons for towers you cant buy
         
         menuUp = false;
+        buyMenu.SetActive(false);
 
         
         switch (type)
@@ -101,7 +102,6 @@ public class TowerBase : MonoBehaviour
         
         hasTower = true;
         canBuy = false;
-        buyMenu.SetActive(false);
         
     }
 
