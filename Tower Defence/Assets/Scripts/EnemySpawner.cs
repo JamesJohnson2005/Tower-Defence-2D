@@ -41,9 +41,13 @@ public class EnemySpawner : MonoBehaviour
         }
         while (waveValue > 0)
         {
+            
             int chosenEnemy = Random.Range(0, enemyTypes.Length);
+            if(enemyCosts[chosenEnemy] <= waveValue)
+            {
             toSpawn.Add(enemyTypes[chosenEnemy]);
             waveValue -= enemyCosts[chosenEnemy];
+            }
         }
 
         spawnDelay =  3 - (toSpawn.Count * 0.2f);

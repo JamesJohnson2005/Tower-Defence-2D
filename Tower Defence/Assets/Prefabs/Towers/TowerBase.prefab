@@ -121,7 +121,7 @@ MonoBehaviour:
   redTower: {fileID: 3966599968792205778}
   purchasable: 0
   baseCost: 100
-  goldCost: 2000
+  goldCost: 1000
   redCost: 5000
 --- !u!1 &3600132772687771748
 GameObject:

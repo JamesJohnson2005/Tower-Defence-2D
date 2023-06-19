@@ -19,7 +19,7 @@ public class EnemyManager : MonoBehaviour
         currentTarget = 1;
         transform.position = pathScript.points[0].transform.position;
         spawnerScript = GameObject.Find("GameManager").GetComponent<EnemySpawner>();
-        gameManager = GetComponent<GameManager>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     private void Update()
