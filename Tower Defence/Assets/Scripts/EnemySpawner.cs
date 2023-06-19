@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -13,14 +14,16 @@ public class EnemySpawner : MonoBehaviour
     private int waveValue;
     private float spawnDelay;
     private float timer;
+    public TextMeshProUGUI waveText;
 
-    public float graceDelay;
-    private float graceTimer;
+    public float graceDelay; // Set this in inspector to wait # long
+    private float graceTimer; // Dont config this in inspector
     private bool awaitingWave;
     private bool gracePeriod;
 
     private void Awake()
     {
+        // Remove this if we dont want enemies to instantly spawn, helpful for testing tho
         SpawnEnemies();
     }
 
@@ -53,7 +56,10 @@ public class EnemySpawner : MonoBehaviour
         timer -= Time.deltaTime;
         remainingEnemies = toSpawn.Count;
 
-        // Decrease graceTimer 
+        // Set Wave Text
+        waveText.text = $"Current Wave: {currentWave}";
+
+        // Decrease graceTimer when its above zero
         if (graceTimer >= 0)
         {
             graceTimer -= Time.deltaTime;
@@ -72,5 +78,9 @@ public class EnemySpawner : MonoBehaviour
             // Use this variable to tell when to do grace period
             awaitingWave = true;
         }
+
+        // TO:DO
+        // when awaitingWave is true, set the grace timer to the grace wait time, do not update it every frame
+        // or else it will always be stuck at the time
     }
 }
