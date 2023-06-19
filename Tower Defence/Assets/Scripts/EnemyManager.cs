@@ -12,6 +12,7 @@ public class EnemyManager : MonoBehaviour
     private EnemySpawner spawnerScript;
     [SerializeField] private int deathValue;
     private GameManager gameManager;
+    [SerializeField] bool explosionImmunity;
 
     private void Awake()
     {
