@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public int startMoney;
     public static int currency;
     public TextMeshProUGUI currencyText;
+    public TextMeshProUGUI destroyText;
     public int lives = 3;
     private void Awake()
     {
