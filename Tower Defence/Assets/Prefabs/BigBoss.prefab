@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5986053819730947976}
   - component: {fileID: 5986053819730947977}
   - component: {fileID: 5986053819730947978}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BigBoss
   m_TagString: Enemy
   m_Icon: {fileID: 0}

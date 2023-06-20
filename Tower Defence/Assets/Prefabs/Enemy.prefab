@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7973204075439345626}
   - component: {fileID: 7973204075439345627}
   - component: {fileID: 7973204075439345624}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -124,3 +124,4 @@ MonoBehaviour:
   enemyHealth: 5
   enemySpeed: 4
   deathValue: 5
+  explosionImmunity: 0
