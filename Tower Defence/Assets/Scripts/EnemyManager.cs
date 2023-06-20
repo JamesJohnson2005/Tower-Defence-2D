@@ -12,7 +12,7 @@ public class EnemyManager : MonoBehaviour
     private EnemySpawner spawnerScript;
     [SerializeField] private int deathValue;
     private GameManager gameManager;
-    [SerializeField] bool explosionImmunity;
+    [SerializeField] public bool explosionImmunity;
 
     private void Awake()
     {
@@ -45,10 +45,8 @@ public class EnemyManager : MonoBehaviour
         // Check enemy health
         if (enemyHealth <= 0)
         {
-            
             GameManager.currency += deathValue;
             Destroy(gameObject);
-            
         }
 
     }
