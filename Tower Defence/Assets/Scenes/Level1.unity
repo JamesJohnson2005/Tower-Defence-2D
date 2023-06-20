@@ -1910,7 +1910,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: $5000
+  m_text: $10000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9da8da2ad7cb907448f0c7de1726d90c, type: 2}
   m_sharedMaterial: {fileID: 7774373713940143878, guid: 9da8da2ad7cb907448f0c7de1726d90c,
@@ -3231,7 +3231,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Damage: 10 Fire Rate: 0.3'
+  m_text: 'Damage: 2 Fire Rate 0.2'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9da8da2ad7cb907448f0c7de1726d90c, type: 2}
   m_sharedMaterial: {fileID: 7774373713940143878, guid: 9da8da2ad7cb907448f0c7de1726d90c,
@@ -5124,7 +5124,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 168, y: 0.0000076294}
+  m_AnchoredPosition: {x: 167.58, y: 0.0000076294}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1112836382
@@ -5380,7 +5380,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: $1000
+  m_text: $2500
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9da8da2ad7cb907448f0c7de1726d90c, type: 2}
   m_sharedMaterial: {fileID: 7774373713940143878, guid: 9da8da2ad7cb907448f0c7de1726d90c,
@@ -7088,7 +7088,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Damage: 100 Fire Rate: 2'
+  m_text: 'Damage: 150 Fire Rate: 2 Exploding Bullets'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9da8da2ad7cb907448f0c7de1726d90c, type: 2}
   m_sharedMaterial: {fileID: 7774373713940143878, guid: 9da8da2ad7cb907448f0c7de1726d90c,
@@ -7116,8 +7116,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12.26
-  m_fontSizeBase: 12.26
+  m_fontSize: 9.14
+  m_fontSizeBase: 9.14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
