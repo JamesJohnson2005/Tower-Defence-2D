@@ -10,6 +10,7 @@ public class TowerController : MonoBehaviour
     private float fireTimer;
     public float towerRange;
     public GameObject bulletPrefab;
+    [SerializeField] private bool explode;
 
     [Header("Tower Attacks")]
     public GameObject currentTarget;
@@ -74,7 +75,7 @@ public class TowerController : MonoBehaviour
                 // Make bullet face the same way as the tower
                 spawnedBullet.transform.right = -transform.up;
 
-                spawnedBullet.GetComponent<BulletManager>().SetValues(bulletDamage, currentTarget);
+                spawnedBullet.GetComponent<BulletManager>().SetValues(bulletDamage, currentTarget, explode);
 
                 // Destroy the bullet after 5 seconds if it somehow manages to stay 'alive' that long
                 Destroy(spawnedBullet, 5);

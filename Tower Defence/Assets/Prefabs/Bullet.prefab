@@ -116,7 +116,7 @@ MonoBehaviour:
   bulletSpeed: 3
   bulletDamage: 5
   target: {fileID: 0}
-  explode: 1
+  explode: 0
   autoAimDis: 5
   explosionRadius: 5
   explosionDamage: 50

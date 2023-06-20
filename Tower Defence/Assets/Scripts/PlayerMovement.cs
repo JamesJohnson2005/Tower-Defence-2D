@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
             // Make bullet face the same way as the tower
             spawnedBullet.transform.right = -transform.up;
 
-            spawnedBullet.GetComponent<BulletManager>().SetValues(playerDamage, null);
+            spawnedBullet.GetComponent<BulletManager>().SetValues(playerDamage, null, false);
 
             // Destroy the bullet after 5 seconds if it somehow manages to stay 'alive' that long
             Destroy(spawnedBullet, 5);

@@ -89,9 +89,10 @@ public class BulletManager : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 
-    public void SetValues(int towerDamage, GameObject _target)
+    public void SetValues(int towerDamage, GameObject _target, bool _explode)
     {
         bulletDamage = towerDamage;
         target = _target;
+        explode = _explode;
     }
 }
