@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public int playerDamage;
     public float fireSpeed;
     public GameObject purchaseText;
+    public GameObject destroyText;
 
     private float x, y;
     private float xPos, yPos;

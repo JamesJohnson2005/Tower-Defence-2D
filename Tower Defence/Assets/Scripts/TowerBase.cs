@@ -35,12 +35,20 @@ public class TowerBase : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && !hasTower)
+        if (collision.gameObject.CompareTag("Player"))
         {
             if (!player) { player = collision.gameObject; }
-            collision.gameObject.GetComponent<PlayerMovement>().purchaseText.SetActive(true);
-            canBuy = true;
-            gameManager.selectedBase = gameObject;
+
+            if (!hasTower)
+            {
+                collision.gameObject.GetComponent<PlayerMovement>().purchaseText.SetActive(true);
+                canBuy = true;
+                gameManager.selectedBase = gameObject;
+            } else
+            {
+                canBuy = true;
+                collision.gameObject.GetComponent<PlayerMovement>().destroyText.SetActive(true);
+            }
         }
         
     }
@@ -49,13 +57,21 @@ public class TowerBase : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerMovement>().purchaseText.SetActive(false);
-            canBuy = false;
-            menuUp = false;
-            gameManager.selectedBase = null;
-            buyMenu.SetActive(false);
+            ResetSelection();
         }
     }
+
+    public void ResetSelection()
+    {
+        player.gameObject.GetComponent<PlayerMovement>().purchaseText.SetActive(false);
+        player.gameObject.GetComponent<PlayerMovement>().destroyText.SetActive(false);
+        canBuy = false;
+        menuUp = false;
+        gameManager.selectedBase = null;
+        buyMenu.SetActive(false);
+    }
+
+
 
     public void Update()
     {
@@ -63,8 +79,18 @@ public class TowerBase : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                menuUp = true;
-                buyMenu.SetActive(true);
+                if (!hasTower)
+                {
+                    menuUp = true;
+                    buyMenu.SetActive(true);
+                } else
+                {
+                    SetTower(player.gameObject.GetComponent<PlayerMovement>().purchaseText);
+                    hasTower = false;
+                    ResetSelection();
+                }
+                player.gameObject.GetComponent<PlayerMovement>().purchaseText.SetActive(false);
+                player.gameObject.GetComponent<PlayerMovement>().destroyText.SetActive(false);
             }
         }
     }
@@ -98,10 +124,8 @@ public class TowerBase : MonoBehaviour
                 break;
         }
         gameManager.selectedBase = null;
-        // TO:DO Remove Coin value
         
         hasTower = true;
-        canBuy = false;
         
     }
 
