@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuScript : MonoBehaviour
 {
     public GameObject pauseMenuObject;
+    public GameObject infoMenu;
     public bool paused;
     private void Update()
     {
@@ -36,9 +37,19 @@ public class MenuScript : MonoBehaviour
     }
     #endregion
     #region Menu
-    public void Settings()
+    public void InfoMenu()
     {
+        infoMenu.SetActive(true);
+    }
 
+    public void Play()
+    {
+        SceneManager.LoadScene("Level1");
+    }
+
+    public void InfoBack()
+    {
+        infoMenu.SetActive(false);
     }
 
 

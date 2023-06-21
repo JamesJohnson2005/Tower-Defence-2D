@@ -1,30 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class HighScore : MonoBehaviour
 {
-    [SerializeField] private float timer;
-    private bool run;
-    // Start is called before the first frame update
-    void Start()
+    private PlayerData playerData = new PlayerData();
+    public int highScore;
+
+    private void Start()
     {
-        run = true;
-        timer = 0;
+        LoadData();
     }
 
-    // Update is called once per frame
-    void Update()
-    { 
-        if (run == true)
-        { 
-            timer += Time.deltaTime;
+    public void LoadData()
+    {
+        string json = File.ReadAllText(Application.dataPath + "/saveFile.json");
+        PlayerData loadedPlayerData = JsonUtility.FromJson<PlayerData>(json);
+        highScore = loadedPlayerData._highScore;
+    }
+
+    public void SaveScore(int newScore)
+    {
+        playerData._highScore = newScore;
+
+        if (newScore > highScore)
+        {
+            string json = JsonUtility.ToJson(playerData);
+            File.WriteAllText(Application.dataPath + "/saveFile.json", json);
         }
-
+        LoadData();
     }
-    public void Win()
+
+
+    private class PlayerData
     {
-        run = false;
-
+     public int _highScore;
     }
+    
 }
+
