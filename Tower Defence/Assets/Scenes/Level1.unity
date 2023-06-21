@@ -2914,8 +2914,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 6
-  playerDamage: 5
-  fireSpeed: 1
+  playerDamage: 10
+  fireSpeed: 0.5
   purchaseText: {fileID: 838755250}
   destroyText: {fileID: 170963328}
   bulletPrefab: {fileID: 3183512889823922385, guid: 8be660cb4bbfe404b889a959ed10f68c,
@@ -6410,11 +6410,11 @@ MonoBehaviour:
   - {fileID: 8882851935821875860, guid: c35ada62eea7bb146a7da8c5f50c0230, type: 3}
   - {fileID: 5986053819730947982, guid: 87950b9002ee6a543b828d1f088c1396, type: 3}
   - {fileID: 2815996124840038865, guid: 16dba3d2b2889f84ca39ed85b23690c1, type: 3}
-  enemyCosts: 0400000001000000140000000f0000000a0000009600000090010000
+  enemyCosts: 04000000010000001e0000000f0000000a0000009600000090010000
   currentEnemies: []
   toSpawn: []
   remainingEnemies: 0
-  currentWave: 1
+  currentWave: 0
   waveText: {fileID: 2047600711}
   graceDelay: 3
 --- !u!114 &1438900002
