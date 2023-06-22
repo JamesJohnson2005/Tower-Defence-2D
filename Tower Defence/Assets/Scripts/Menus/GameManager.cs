@@ -40,8 +40,11 @@ public class GameManager : MonoBehaviour
         // Check for game over
         if (lives <= 0 && !gameOver)
         {
+            // Run game over stuff
             Time.timeScale = 0;
             loseScreen.SetActive(true);
+
+            // Save highscore if theres a new score
             scoreScript.SaveScore(spawnerScript.currentWave);
             loseText.text = $"Score: {spawnerScript.currentWave}\nHighscore: {scoreScript.highScore}";
             gameOver = true;
