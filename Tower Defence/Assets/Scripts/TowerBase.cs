@@ -21,6 +21,7 @@ public class TowerBase : MonoBehaviour
     private GameObject player;
     public bool purchasable;
     [SerializeField]private int baseCost, goldCost, redCost;
+    int towerType;
 
     private void Start()
     {
@@ -87,6 +88,18 @@ public class TowerBase : MonoBehaviour
                 {
                     SetTower(player.gameObject.GetComponent<PlayerMovement>().purchaseText);
                     hasTower = false;
+                   switch (towerType)
+                    {
+                        case 1:
+                            GameManager.currency += baseCost / 2;
+                            break;
+                        case 2:
+                            GameManager.currency += goldCost / 2;
+                            break;
+                        case 3:
+                            GameManager.currency += redCost / 2;
+                            break;
+                    }
                     ResetSelection();
                 }
                 player.gameObject.GetComponent<PlayerMovement>().purchaseText.SetActive(false);
@@ -110,16 +123,19 @@ public class TowerBase : MonoBehaviour
             case 1:
                 if(GameManager.currency < baseCost) { return; }
                 SetTower(baseTower);
+                towerType = 1;
                 GameManager.currency -= baseCost;
                 break;
             case 2:
                 if (GameManager.currency < goldCost) { return; }
                 SetTower(goldTower);
+                towerType = 2;
                 GameManager.currency -= goldCost;
                 break;
             case 3:
                 if (GameManager.currency < redCost) { return; }
                 SetTower(redTower);
+                towerType = 3;
                 GameManager.currency -= redCost;
                 break;
         }
