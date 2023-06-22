@@ -6540,7 +6540,7 @@ MonoBehaviour:
   currentEnemies: []
   toSpawn: []
   remainingEnemies: 0
-  currentWave: 30
+  currentWave: 0
   waveText: {fileID: 2047600711}
   graceDelay: 3
 --- !u!114 &1438900002
@@ -6557,7 +6557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedBase: {fileID: 0}
   gameOverScreen: {fileID: 569300336}
-  startMoney: 5000
+  startMoney: 200
   currencyText: {fileID: 1753432439}
   destroyText: {fileID: 170963330}
   livesText: {fileID: 58227659}
