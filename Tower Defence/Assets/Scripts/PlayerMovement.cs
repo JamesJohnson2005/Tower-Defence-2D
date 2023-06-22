@@ -30,20 +30,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        // Get Mouse Position
         fireTimer -= Time.deltaTime;
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 worldPosFlattened = new Vector3(worldPosition.x, worldPosition.y, 0);
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            if (Time.timeScale == 1)
-            {
-                Time.timeScale = 10;
-            } else if (Time.timeScale == 10)
-            {
-                Time.timeScale = 1;
-            }
-        }
 
         transform.right = Vector3.Lerp(transform.right, worldPosFlattened - transform.position, Time.deltaTime * 10);
 
@@ -55,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
         {
             PlayerShoot();
         }
+
+        // Clamp the player to the camera bounds
         xPos = Mathf.Clamp(transform.position.x, -screenBounds.x + transform.localScale.x, screenBounds.x - transform.localScale.y);
         yPos = Mathf.Clamp(transform.position.y, -screenBounds.y + transform.localScale.x, screenBounds.y - transform.localScale.y);
 
