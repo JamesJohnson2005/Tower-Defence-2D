@@ -6,22 +6,16 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public GameObject selectedBase;
+    public GameObject gameOverScreen;
     public int startMoney;
     public static int currency;
     public TextMeshProUGUI currencyText;
     public TextMeshProUGUI destroyText;
-    public TextMeshProUGUI loseText;
-    public GameObject loseScreen;
-    private HighScore scoreScript;
-    private EnemySpawner spawnerScript;
-    private bool gameOver;
+    public TextMeshProUGUI livesText;
     public int lives = 3;
     private void Awake()
     {
-        // Give player the starting money
         currency = startMoney;
-        scoreScript = GetComponent<HighScore>();
-        spawnerScript = GetComponent<EnemySpawner>();
     }
 
     public void BuyTower(int type)
@@ -31,17 +25,12 @@ public class GameManager : MonoBehaviour
     }
     public void Update()
     {
-        // Update Currenvy Value
         currencyText.text = $"Currency: {currency}";
-
-        // Check for game over
-        if (lives <= 0 && !gameOver)
+        livesText.text = $"Lives: {lives}";
+        if (lives <= 0)
         {
-            Time.timeScale = 0;
-            loseScreen.SetActive(true);
-            scoreScript.SaveScore(spawnerScript.currentWave);
-            loseText.text = $"Score: {spawnerScript.currentWave}\nHighscore: {scoreScript.highScore}";
-            gameOver = true;
+            gameOverScreen.SetActive(true);
+            //Game End Method
         }
     }
 }

@@ -123,5 +123,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealth: 350
   enemySpeed: 2
-  deathValue: 100
+  deathValue: 40
   explosionImmunity: 0

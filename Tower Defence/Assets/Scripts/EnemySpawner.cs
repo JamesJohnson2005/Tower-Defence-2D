@@ -90,7 +90,7 @@ public class EnemySpawner : MonoBehaviour
     public void StartCooldown()
     {
         // Set timer to the correct amount
-        GameManager.currency += currentWave * 25;
+        GameManager.currency += currentWave * 5;
         graceTimer = graceDelay;
         awaitingWave = true;
     }
