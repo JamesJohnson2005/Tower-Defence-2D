@@ -12,10 +12,17 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI currencyText;
     public TextMeshProUGUI destroyText;
     public TextMeshProUGUI livesText;
+    public TextMeshProUGUI loseText;
+    public GameObject loseScreen;
+    private HighScore scoreScript;
+    private EnemySpawner spawnerScript;
+    private bool gameOver;
     public int lives = 3;
     private void Awake()
     {
         currency = startMoney;
+        scoreScript = GetComponent<HighScore>();
+        spawnerScript = GetComponent<EnemySpawner>();
     }
 
     public void BuyTower(int type)
@@ -27,10 +34,14 @@ public class GameManager : MonoBehaviour
     {
         currencyText.text = $"Currency: {currency}";
         livesText.text = $"Lives: {lives}";
-        if (lives <= 0)
+        // Check for game over
+        if (lives <= 0 && !gameOver)
         {
-            gameOverScreen.SetActive(true);
-            //Game End Method
+            Time.timeScale = 0;
+            loseScreen.SetActive(true);
+            scoreScript.SaveScore(spawnerScript.currentWave);
+            loseText.text = $"Score: {spawnerScript.currentWave}\nHighscore: {scoreScript.highScore}";
+            gameOver = true;
         }
     }
 }
