@@ -2412,7 +2412,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: $10000
+  m_text: $7500
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9da8da2ad7cb907448f0c7de1726d90c, type: 2}
   m_sharedMaterial: {fileID: 7774373713940143878, guid: 9da8da2ad7cb907448f0c7de1726d90c,
@@ -3748,7 +3748,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Damage: 2 Fire Rate 0.2'
+  m_text: 'Damage: 2 Fire Rate 0.1'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9da8da2ad7cb907448f0c7de1726d90c, type: 2}
   m_sharedMaterial: {fileID: 7774373713940143878, guid: 9da8da2ad7cb907448f0c7de1726d90c,
@@ -6536,11 +6536,11 @@ MonoBehaviour:
   - {fileID: 8882851935821875860, guid: c35ada62eea7bb146a7da8c5f50c0230, type: 3}
   - {fileID: 5986053819730947982, guid: 87950b9002ee6a543b828d1f088c1396, type: 3}
   - {fileID: 2815996124840038865, guid: 16dba3d2b2889f84ca39ed85b23690c1, type: 3}
-  enemyCosts: 0400000001000000320000000f0000000a00000090010000c8000000
+  enemyCosts: 0400000001000000320000000f0000000a00000090010000fa000000
   currentEnemies: []
   toSpawn: []
   remainingEnemies: 0
-  currentWave: 0
+  currentWave: 30
   waveText: {fileID: 2047600711}
   graceDelay: 3
 --- !u!114 &1438900002
@@ -6557,7 +6557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedBase: {fileID: 0}
   gameOverScreen: {fileID: 569300336}
-  startMoney: 200
+  startMoney: 5000
   currencyText: {fileID: 1753432439}
   destroyText: {fileID: 170963330}
   livesText: {fileID: 58227659}

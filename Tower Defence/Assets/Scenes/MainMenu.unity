@@ -1400,7 +1400,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Project: Tower Defence'
+  m_text: Timed Control TD
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9da8da2ad7cb907448f0c7de1726d90c, type: 2}
   m_sharedMaterial: {fileID: 7774373713940143878, guid: 9da8da2ad7cb907448f0c7de1726d90c,
