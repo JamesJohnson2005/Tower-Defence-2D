@@ -27,6 +27,7 @@ public class BulletManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        // Check discord from enemy to have the bullet move
         if (disFromEnemy > autoAimDis)
         {
             rb.AddForce(bulletSpeed * gameObject.transform.up, ForceMode2D.Impulse);
@@ -41,6 +42,7 @@ public class BulletManager : MonoBehaviour
 
     private void Update()
     {
+        // Change behaviour off of if theres a target
         if (target != null)
         {
             disFromEnemy = Vector2.Distance(transform.position, target.transform.position);
@@ -59,7 +61,10 @@ public class BulletManager : MonoBehaviour
             if (explode) {
 
                 Collider2D[] hitCollider;
+                // Check for explosion collisions
                 hitCollider = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+
+                // Spawn explosion object
                 GameObject spawnedObj = Instantiate(explosionParticle, transform.position, Quaternion.identity);
                 spawnedObj.transform.rotation = new Quaternion(90, 0, 0, 0);
                 Destroy(spawnedObj, 2);
@@ -72,6 +77,7 @@ public class BulletManager : MonoBehaviour
                     if (!hitCollider[i].gameObject.GetComponent<EnemyManager>()) { return; }
                     EnemyManager enemyScriptLocal = hitCollider[i].gameObject.GetComponent<EnemyManager>();
 
+                    // Don't damage enemies that are immune
                     if (enemyScriptLocal.explosionImmunity) { return; }
 
                     enemyScriptLocal.ChangeHealth(-explosionDamage);

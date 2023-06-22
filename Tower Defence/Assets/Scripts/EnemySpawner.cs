@@ -34,19 +34,29 @@ public class EnemySpawner : MonoBehaviour
 
         awaitingWave = false;
 
+
+        /*
+         * ENEMY SPAWNING SYSTEM
+         * 
+         * The game gets a value that it can use to 'buy' random enemies to spawn, the value is based off the wave and this
+         * is how the game keeps things more 'random' and scales as the game progresses. We make sure to have an enemy that costs 1 incase it has left over points 
+         * so it can fill it any spots it may have
+         */
+
         // Get Wave Value
         waveValue = currentWave * 5;
         while (waveValue > 0)
         {
-            
+            // Choose enemies to spawn, and reduce the money the game has to choose enemies
             int chosenEnemy = Random.Range(0, enemyTypes.Length);
-            if(enemyCosts[chosenEnemy] <= waveValue)
+            if(enemyCosts[chosenEnemy] <= waveValue) // Does the game have enough to buy it?
             {
             toSpawn.Add(enemyTypes[chosenEnemy]);
             waveValue -= enemyCosts[chosenEnemy];
             }
         }
 
+        // Dont spawn all enemies at once, but make it scale naturally
         spawnDelay =  3 - (toSpawn.Count * 0.2f);
 
         if (spawnDelay < 0.2f) { spawnDelay = 0.2f; } // Hard limit
@@ -54,7 +64,10 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
+        // Reduce timer
         timer -= Time.deltaTime;
+
+
         remainingEnemies = toSpawn.Count;
 
         // Set Wave Text
@@ -69,6 +82,7 @@ public class EnemySpawner : MonoBehaviour
             SpawnEnemies();
         }
 
+        // Check to see if it times to start a new wave
         if (timer <= 0 && toSpawn.Count > 0)
         {
             GameObject spawnedEnemy = Instantiate(toSpawn[0].gameObject, transform.position, Quaternion.identity);
@@ -77,14 +91,11 @@ public class EnemySpawner : MonoBehaviour
             timer = spawnDelay;
         }
 
+        // Check if its time for the grace period
         if (currentEnemies.Count == 0 && remainingEnemies == 0 && awaitingWave == false)
         {
             StartCooldown();
         }
-
-        // TO:DO
-        // when awaitingWave is true, set the grace timer to the grace wait time, do not update it every frame
-        // or else it will always be stuck at the time
     }
 
     public void StartCooldown()

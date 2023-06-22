@@ -22,14 +22,19 @@ public class GameManager : MonoBehaviour
     public int lives = 3;
     private void Awake()
     {
+        // Set the speed button color
         speedButtons[0].color = Color.green;
+        // Set starting money
         currency = startMoney;
+
+        // Assign References
         scoreScript = GetComponent<HighScore>();
         spawnerScript = GetComponent<EnemySpawner>();
     }
 
     public void BuyTower(int type)
     {
+        // Purchase a tower
         if (selectedBase)
             selectedBase.GetComponent<TowerBase>().PlaceTower(type);
     }
@@ -53,13 +58,16 @@ public class GameManager : MonoBehaviour
 
     public void ChangeSpeed(int _speed)
     {
+        // Adjust game speed
         Time.timeScale = _speed;
         
+        // Set all buttons to normal
         foreach(Image image in speedButtons)
         {
             image.color = Color.white;
         }
 
+        // Set the button you pressed to green
         switch (_speed)
         {
             case 1:
