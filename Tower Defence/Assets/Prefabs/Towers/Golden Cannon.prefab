@@ -73,10 +73,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletDamage: 2
-  fireSpeed: 0.2
-  towerRange: 10
+  fireSpeed: 0.1
+  towerRange: 15
   bulletPrefab: {fileID: 3183512889823922385, guid: 8be660cb4bbfe404b889a959ed10f68c,
     type: 3}
+  explode: 0
   currentTarget: {fileID: 0}
   targets: []
 --- !u!50 &8461102807531723077
