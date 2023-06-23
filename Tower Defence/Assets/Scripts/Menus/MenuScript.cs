@@ -52,6 +52,10 @@ public class MenuScript : MonoBehaviour
         infoMenu.SetActive(false);
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 
 
 
